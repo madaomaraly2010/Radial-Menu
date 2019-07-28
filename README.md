@@ -1,6 +1,7 @@
 # Radial Menu for ios and android
 
-[Radial Menu](radial-menu.gif)
+<img src="radial-menu.gif">
+
 # How to use it
 
 
