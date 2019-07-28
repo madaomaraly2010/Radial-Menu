@@ -1,16 +1,48 @@
-# radialmenu
+# Radial Menu for ios and android
 
-A new Flutter project.
+[Radial Menu](https://sendeyo.com/up/2ac36c911d5dc6f41b50d4e142db2d29.svg)
+# How to use it
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+```
+import 'package:radialmenu/radial_menu.dart';
+```
+### create list of RadialMenuItem :
+```
+ List<RadialMenuItem> menuList =  [
+        RadialMenuItem(
+            title: "Item One", color: Colors.green, icon: Icons.access_alarm),
+        RadialMenuItem(
+            title: "Item Two", color: Colors.red, icon: Icons.account_box),
+        RadialMenuItem(
+            title: "Item Three", color: Colors.teal, icon: Icons.add_a_photo),
+        RadialMenuItem(
+            title: "Item Three", color: Colors.teal, icon: Icons.add_a_photo),
+        RadialMenuItem(
+            title: "Item Three", color: Colors.teal, icon: Icons.add_a_photo)
+      ]
+```
+note:set the properties of RadialMenuItem title,color,icon.
+```
+return MaterialApp(
+    theme: ThemeData(primarySwatch: Colors.green),
+    home: RadialMenu(
+      radius: 150,
+      itemSize: 80,
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        appBar: AppBar(
+          title: Text("Radial Menu"),
+        ),
+        body: Center(
+            child:Container()
+        ),
+      ),
+      onItemTapped: (i) {
+        print("Item Tapped $i");
+      },
+      list:menuList
+    ),
+  );
+  ```
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.io/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.io/docs/cookbook)
-
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.io/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
