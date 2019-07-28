@@ -7,8 +7,24 @@ A new Flutter project.
 ```
 import 'package:radialmenu/radial_menu.dart';
 ```
+### create list of RadialMenuItem :
 ```
-2 -return MaterialApp(
+ List<RadialMenuItem> menuList =  [
+        RadialMenuItem(
+            title: "Item One", color: Colors.green, icon: Icons.access_alarm),
+        RadialMenuItem(
+            title: "Item Two", color: Colors.red, icon: Icons.account_box),
+        RadialMenuItem(
+            title: "Item Three", color: Colors.teal, icon: Icons.add_a_photo),
+        RadialMenuItem(
+            title: "Item Three", color: Colors.teal, icon: Icons.add_a_photo),
+        RadialMenuItem(
+            title: "Item Three", color: Colors.teal, icon: Icons.add_a_photo)
+      ]
+```
+note:set the properties of RadialMenuItem title,color,icon.
+```
+return MaterialApp(
     theme: ThemeData(primarySwatch: Colors.green),
     home: RadialMenu(
       radius: 150,
@@ -25,18 +41,7 @@ import 'package:radialmenu/radial_menu.dart';
       onItemTapped: (i) {
         print("Item Tapped $i");
       },
-      list: [
-        RadialMenuItem(
-            title: "Item One", color: Colors.green, icon: Icons.access_alarm),
-        RadialMenuItem(
-            title: "Item Two", color: Colors.red, icon: Icons.account_box),
-        RadialMenuItem(
-            title: "Item Three", color: Colors.teal, icon: Icons.add_a_photo),
-        RadialMenuItem(
-            title: "Item Three", color: Colors.teal, icon: Icons.add_a_photo),
-        RadialMenuItem(
-            title: "Item Three", color: Colors.teal, icon: Icons.add_a_photo)
-      ],
+      list:menuList
     ),
   );
   ```
