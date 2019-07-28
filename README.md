@@ -24,6 +24,7 @@ import 'package:radialmenu/radial_menu.dart';
       ]
 ```
 note:set the properties of RadialMenuItem title,color,icon.
+### wrap the scafold within RadialMenu
 ```
 return MaterialApp(
     theme: ThemeData(primarySwatch: Colors.green),
