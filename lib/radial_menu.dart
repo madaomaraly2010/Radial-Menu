@@ -100,16 +100,16 @@ class _RadialMenuState extends State<RadialMenu> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     List<Widget> wlist = [];
     wlist.add(widget.child);
-
-    if (menuState == RadialMenuState.Opened) {
-      wlist.add(GestureDetector(
-        onTap: () {
-          _close();
-        },
-        child: Container(color: Colors.black12.withOpacity(0.5)),
-      ));
+    if (widget.autoOpen == false) {
+      if (menuState == RadialMenuState.Opened) {
+        wlist.add(GestureDetector(
+          onTap: () {
+            _close();
+          },
+          child: Container(color: Colors.black12.withOpacity(0.5)),
+        ));
+      }
     }
-
     wlist.addAll(_buildButtonList());
     if (widget.autoOpen == false) {
       wlist.add(_buildcloseButton());
