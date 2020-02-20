@@ -12,6 +12,8 @@ class RadialMenu extends StatefulWidget {
   final iconColor;
   final OnItemTapped onItemTapped;
   final Widget child;
+  final bool autoOpen;
+
   const RadialMenu(
       {Key key,
       this.list,
@@ -21,6 +23,7 @@ class RadialMenu extends StatefulWidget {
       this.itemSize = 50,
       this.iconColor = Colors.white,
       this.onItemTapped,
+      this.autoOpen = true,
       @required this.child})
       : super(key: key);
 
@@ -87,6 +90,10 @@ class _RadialMenuState extends State<RadialMenu> with TickerProviderStateMixin {
         curve: Interval(0.0, 0.5, curve: widget.curve)));
 
     super.initState();
+
+    if (widget.autoOpen) {
+      this._open();
+    }
   }
 
   @override
@@ -94,21 +101,20 @@ class _RadialMenuState extends State<RadialMenu> with TickerProviderStateMixin {
     List<Widget> wlist = [];
     wlist.add(widget.child);
 
-   if(menuState==RadialMenuState.Opened)
-   {
-     wlist.add( GestureDetector(
-       onTap: (){ _close(); },
-           child: Container(
-               color:Colors.black12.withOpacity(0.5)
-           ),    
-     ) );
-   }
-
+    if (menuState == RadialMenuState.Opened) {
+      wlist.add(GestureDetector(
+        onTap: () {
+          _close();
+        },
+        child: Container(color: Colors.black12.withOpacity(0.5)),
+      ));
+    }
 
     wlist.addAll(_buildButtonList());
-
-    wlist.add(_buildcloseButton());
-    wlist.add(_buildOpenButton());
+    if (widget.autoOpen == false) {
+      wlist.add(_buildcloseButton());
+      wlist.add(_buildOpenButton());
+    }
     return Stack(alignment: Alignment.center, children: wlist);
   }
 
@@ -195,8 +201,8 @@ class _RadialMenuState extends State<RadialMenu> with TickerProviderStateMixin {
         child: InkWell(
           onTap: () {
             if (widget.onItemTapped != null) {
-                widget.onItemTapped(i);
-                _close();
+              widget.onItemTapped(i);
+              _close();
             }
           },
           child: Column(
