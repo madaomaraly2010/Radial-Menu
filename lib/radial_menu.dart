@@ -203,7 +203,7 @@ class _RadialMenuState extends State<RadialMenu> with TickerProviderStateMixin {
           onTap: () {
             if (widget.onItemTapped != null) {
               widget.onItemTapped(item);
-              _close();
+              if (!widget.autoOpen) _close();
             }
           },
           child: Column(
