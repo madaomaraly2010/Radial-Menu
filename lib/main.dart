@@ -78,8 +78,8 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           body: Center(child: Container()),
         ),
-        onItemTapped: (i) {
-          print("Item Tapped $i");
+        onItemTapped: (item) {
+          print("Item Tapped ${item.value}");
         },
         list: [
           RadialMenuItem(

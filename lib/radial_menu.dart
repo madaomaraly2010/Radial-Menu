@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
-typedef void OnItemTapped(int index);
+typedef void OnItemTapped(RadialMenuItem index);
 
 class RadialMenu extends StatefulWidget {
   final List<RadialMenuItem> list;
@@ -199,9 +199,10 @@ class _RadialMenuState extends State<RadialMenu> with TickerProviderStateMixin {
       child: Material(
         color: Colors.transparent,
         child: InkWell(
+          splashColor: Colors.white,
           onTap: () {
             if (widget.onItemTapped != null) {
-              widget.onItemTapped(i);
+              widget.onItemTapped(item);
               _close();
             }
           },
@@ -244,8 +245,9 @@ class RadialMenuItem {
   final IconData icon;
   final Color color;
   final String title;
+  final String value;
 
-  RadialMenuItem({this.icon, this.color, this.title});
+  RadialMenuItem({this.value = "", this.icon, this.color, this.title});
 }
 
 enum RadialMenuState { Opened, Opening, Closed, Closing }
