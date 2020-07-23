@@ -218,7 +218,7 @@ class _RadialMenuState extends State<RadialMenu> with TickerProviderStateMixin {
                 child: Icon(
                   item.icon,
                   size: widget.itemSize / 2,
-                  color: Colors.white,
+                  color: item.iconColor,
                 ),
               ),
               Text(
@@ -244,10 +244,16 @@ class _RadialMenuState extends State<RadialMenu> with TickerProviderStateMixin {
 class RadialMenuItem {
   final IconData icon;
   final Color color;
+  final Color iconColor;
   final String title;
   final String value;
 
-  RadialMenuItem({this.value = "", this.icon, this.color, this.title});
+  RadialMenuItem(
+      {this.value = "",
+      this.icon,
+      this.color,
+      this.title,
+      this.iconColor = Colors.white});
 }
 
 enum RadialMenuState { Opened, Opening, Closed, Closing }
